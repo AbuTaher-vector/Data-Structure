@@ -1,0 +1,35 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define nn int
+#define dd double
+#define ll long long int
+#define ss string
+#define nl '\n'
+int main()
+{
+     #ifndef ONLINE_JUDGE
+     freopen("input.txt", "r", stdin);
+     freopen("outputt.txt", "w", stdout);
+     #endif
+     nn e,v;
+     cin>>v>>e;
+     nn arr[v][v];
+     nn x,y;
+      for(nn i=0;i<v;i++)
+      {
+           for(nn j=0;j<v;j++) arr[i][j]=0;
+
+      }
+     while(e--)
+     {
+        cin>>x>>y;
+        arr[x][y]++;
+        arr[y][x]++;
+     }
+     for(nn i=0;i<v;i++)
+      {
+           for(nn j=0;j<v;j++) cout<<arr[i][j]<<" ";
+
+               cout<<nl;
+      }
+}
