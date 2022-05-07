@@ -1,0 +1,43 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define nn int
+#define dd double
+#define ll long long int
+#define ss string
+#define nl '\n'
+const nn N=1e5;
+vector<nn>vis(N,0);
+vector<nn>v[N];
+int main()
+{
+     #ifndef ONLINE_JUDGE
+     freopen("input.txt", "r", stdin);
+     freopen("outputt.txt", "w", stdout);
+     #endif
+     nn n,m;
+     cin>>n>>m;
+     nn x,y;
+     while(m--){
+          cin>>x>>y;
+          v[x].push_back(y);
+          v[y].push_back(x);    
+     }
+     queue<nn>q;
+     q.push(1);
+     vis[1]++;
+     while(!q.empty())
+     {
+          nn a=q.front();
+          q.pop();
+          cout<<a<<nl;
+          for(auto x:v[a])
+          {
+               if(!vis[x])
+               {
+                    vis[x]=1;
+                    q.push(x);
+               }
+          }
+
+     }
+}
