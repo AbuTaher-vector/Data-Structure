@@ -1,0 +1,41 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define nn int
+#define dd double
+#define ll long long int
+#define ss string
+#define nl '\n'
+void addedge(vector<nn>graph[],nn x,nn y)
+{
+    graph[x].push_back(y);
+    graph[y].push_back(x);
+}
+void printgraph(vector<nn>graph[],nn v)
+{
+      for(nn i=0;i<v;i++)
+      {
+          cout<<i;
+          for(auto x:graph[i])
+          {
+            cout<<"->"<<x;
+          }
+          cout<<nl;
+      }
+}
+int main()
+{
+     #ifndef ONLINE_JUDGE
+     freopen("input.txt", "r", stdin);
+     freopen("outputt.txt", "w", stdout);
+     #endif
+     nn e,v;
+     cin>>v>>e;
+     vector<nn>graph[v];
+     nn x,y;
+     while(e--)
+     {
+        cin>>x>>y;
+        addedge(graph,x,y);
+     }
+     printgraph(graph,v);
+}
