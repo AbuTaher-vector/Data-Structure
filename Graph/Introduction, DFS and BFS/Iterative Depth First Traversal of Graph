@@ -1,0 +1,52 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define nn int
+#define dd double
+#define ll long long int
+#define ss string
+#define nl '\n'
+using namespace std;
+void setup()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+     #ifndef ONLINE_JUDGE
+     freopen("input.txt", "r", stdin);
+     freopen("outputt.txt", "w", stdout);
+     #endif
+
+}
+int dfs(vector<nn>g[],nn N)
+{
+    vector<nn>vis(N,0);
+    stack<nn>st;
+    st.push(0);
+    while(!st.empty())
+    {
+         nn x=st.top();
+         st.pop();
+         cout<<x<<" ";
+         vis[x]++;
+         for(auto i:g[x])
+         {
+            if(!vis[i]) st.push(i);
+         }
+    }
+   
+
+
+}
+int main()
+{
+ //https://www.geeksforgeeks.org/iterative-depth-first-traversal/
+   setup();
+   vector<nn>v[5];
+   v[1].push_back(0);
+   v[0].push_back(2);
+   v[2].push_back(1);
+   v[0].push_back(3);
+   v[1].push_back(4);
+   dfs(v,5);
+ 
+      
+}
