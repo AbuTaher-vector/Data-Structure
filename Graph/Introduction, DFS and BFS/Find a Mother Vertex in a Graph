@@ -1,0 +1,68 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define nn int
+#define dd double
+#define ll long long int
+#define ss string
+#define nl '\n'
+using namespace std;
+void setup()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+     #ifndef ONLINE_JUDGE
+     freopen("input.txt", "r", stdin);
+     freopen("outputt.txt", "w", stdout);
+     #endif
+
+}
+void dfs(vector<nn>g[],nn start_node,vector<nn>&vis)
+{
+   vis[start_node]++;
+   for(auto i:g[start_node])
+   {
+      if(!vis[i]) dfs(g,i,vis); 
+   }
+
+}
+int mother_vertex(vector<nn>g[],nn N)
+{
+    vector<nn>vis(7,0);
+   nn last_node;
+   for(nn i=0;i<N;i++)
+   {
+      if(!vis[i])
+      {
+         dfs(g,i,vis);
+         last_node=i;
+      }
+   }
+
+   for(nn i=0;i<N;i++) vis[i]=0;
+      dfs(g,last_node,vis);
+   for(nn i=0;i<N;i++)
+   {
+      if(!vis[i]) return -1;
+   }
+
+   return last_node;
+
+
+}
+int main()
+{
+//https://www.geeksforgeeks.org/find-a-mother-vertex-in-a-graph/
+   setup();
+   vector<nn>v[7];
+   v[0].push_back(1);
+   v[0].push_back(2);
+   v[1].push_back(3);
+   v[4].push_back(1);
+   v[6].push_back(4);
+   v[5].push_back(6);
+   v[5].push_back(2);
+   v[6].push_back(0);
+   cout<<mother_vertex(v,7)<<nl;
+ 
+      
+}
